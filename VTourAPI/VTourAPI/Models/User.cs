@@ -15,13 +15,5 @@ namespace VTourAPI.Models
         public string StreetAddress { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
-        public void CreateUser()
-        {
-            Repositories.UserRepository test = new Repositories.UserRepository();
-            test.CreateUser(this);
-        }
     }
-
-    
 }
