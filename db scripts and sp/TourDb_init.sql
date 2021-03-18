@@ -11,8 +11,7 @@ DROP TABLE Tours;
 DROP DATABASE TourDb;
 CREATE DATABASE TourDb;
 
-
-
+USE TourDb;
 --User
 CREATE TABLE Cities (
 	PostalCode integer,
@@ -21,7 +20,7 @@ CREATE TABLE Cities (
 );
 
 CREATE TABLE Users (
-	Id integer,
+	Id integer IDENTITY(1,1),
 	Email varchar(255),
 	Phonenumber varchar(255),
 	UserPassword varchar(255),
