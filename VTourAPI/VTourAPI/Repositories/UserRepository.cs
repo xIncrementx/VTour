@@ -12,7 +12,6 @@ namespace VTourAPI.Repositories
     {
         string server = "THESPANISHINQUI";
         string database = "TourDB";
-
         string connectionString;
 
         public UserRepository ()
@@ -134,18 +133,11 @@ namespace VTourAPI.Repositories
             {
                 connection.ConnectionString = connectionString;
 
-                using (SqlCommand cmd = new SqlCommand("Createuser", connection))
+                using (SqlCommand cmd = new SqlCommand("DeleteUser", connection))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = user.Id;
-                    cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = user.Email;
-                    cmd.Parameters.Add("@Phonenumber", SqlDbType.VarChar).Value = user.PhoneNumber;
-                    cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar).Value = user.Password;
-                    cmd.Parameters.Add("@Firstname", SqlDbType.VarChar).Value = user.FirstName;
-                    cmd.Parameters.Add("@Surname", SqlDbType.VarChar).Value = user.Surname;
-                    cmd.Parameters.Add("@PostalCode", SqlDbType.Int).Value = user.PostalCode;
-                    cmd.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = user.StreetAddress;
 
                     connection.Open();
                     cmd.ExecuteNonQuery();
