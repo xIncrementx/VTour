@@ -8,46 +8,35 @@ namespace VTourAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        public UserRepository UserRepository{ get; }
+        private readonly UserRepository userRepository;
 
-        public UserController()
-        {
-            UserRepository = new UserRepository();
-        }
+        public UserController(UserRepository userRepository) => this.userRepository = userRepository;
 
         // GET api/<UserController>
         [HttpGet("{mail}")]
-        public User Get(string mail)
-        {
-            return UserRepository.ReadUser(mail);
-        }
+        public User Get(string mail) => this.userRepository.ReadUser(mail);
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] User user)
-        {
-            UserRepository.CreateUser(user);
-        }
+        public void Post([FromBody] User user) => this.userRepository.CreateUser(user);
 
         // PUT api/<UserController>
         [HttpPut]
         public void Put([FromBody] User user)
         {
-            user.Id = UserRepository.ReadUser(user.Email).Id;
-            if (user != null)
-            {
-                UserRepository.UpdateUser(user);
-            }
+            
+            user.Id = this.userRepository.ReadUser(user.Email).Id;
+            this.userRepository.UpdateUser(user);
         }
 
         // DELETE api/<UserController>
         [HttpDelete("{mail}")]
         public void Delete(string mail)
         {
-            User user = UserRepository.ReadUser(mail);
+            var user = this.userRepository.ReadUser(mail);
             if (user != null)
             {
-                UserRepository.DeleteUser(user);
+                this.userRepository.DeleteUser(user);
             }
         }
     }

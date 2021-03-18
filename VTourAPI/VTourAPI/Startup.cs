@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using VTourAPI.Repositories;
 
 namespace VTourAPI
 {
@@ -21,6 +22,8 @@ namespace VTourAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VTourAPI", Version = "v1" });
             });
+
+            services.AddScoped<UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
