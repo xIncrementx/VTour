@@ -31,7 +31,7 @@ namespace VTourAPI.Repositories
 
                     cmd.Parameters.Add("@Id", SqlDbType.Int).Value = user.Id;
                     cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = user.Email;
-                    cmd.Parameters.Add("@Phonenumber", SqlDbType.VarChar).Value = user.PhoneNumber;
+                    cmd.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = user.PhoneNumber;
                     cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar).Value = user.Password;
                     cmd.Parameters.Add("@Firstname", SqlDbType.VarChar).Value = user.FirstName;
                     cmd.Parameters.Add("@Surname", SqlDbType.VarChar).Value = user.Surname;
