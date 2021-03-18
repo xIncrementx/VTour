@@ -14,19 +14,19 @@ namespace VTourAPI.Controllers
 
         // GET api/<UserController>
         [HttpGet("{mail}")]
-        public  User Get(string mail) =>  this.userRepository.ReadUser(mail);
+        public  UserInfo Get(string mail) =>  this.userRepository.ReadUser(mail);
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] User user) => this.userRepository.CreateUser(user);
+        public void Post([FromBody] UserInfo userInfo) => this.userRepository.CreateUser(userInfo);
 
         // PUT api/<UserController>
         [HttpPut]
-        public void Put([FromBody] User user)
+        public void Put([FromBody] UserInfo userInfo)
         {
             
-            user.Id = this.userRepository.ReadUser(user.Email).Id;
-            this.userRepository.UpdateUser(user);
+            //userInfo.Id = this.userRepository.ReadUser(userInfo.Email).Id;
+            this.userRepository.UpdateUser(userInfo);
         }
 
         // DELETE api/<UserController>
