@@ -13,14 +13,14 @@ namespace VTourAPI.Repositories
             using var connection = new SqlConnection {ConnectionString = ConnectionString};
             using var cmd = new SqlCommand("CreateUser", connection) {CommandType = CommandType.StoredProcedure};
 
-            cmd.Parameters.Add("@Firstname", SqlDbType.VarChar).Value = userInfo.FirstName;
+            cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = userInfo.FirstName;
             cmd.Parameters.Add("@Surname", SqlDbType.VarChar).Value = userInfo.Surname;
-            cmd.Parameters.Add("@Address", SqlDbType.VarChar).Value = userInfo.Address;
+            cmd.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = userInfo.Address;
             cmd.Parameters.Add("@PostalCode", SqlDbType.Int).Value = userInfo.PostalCode;
             cmd.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = userInfo.PhoneNumber;
             cmd.Parameters.Add("@Country", SqlDbType.VarChar).Value = userInfo.Country;
             cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = userInfo.Email;
-            cmd.Parameters.Add("@HashedPassword", SqlDbType.VarChar).Value = userInfo.HashPassword;
+            cmd.Parameters.Add("@HashedPassword", SqlDbType.VarChar).Value = userInfo.HashedPassword;
 
             connection.Open();
             cmd.ExecuteNonQuery();
@@ -41,7 +41,7 @@ namespace VTourAPI.Repositories
                 {
                     switch (reader.GetName(i))
                     {
-                        case "Firstname":
+                        case "FirstName":
                             userToReturn.FirstName = reader.GetString(i);
                             break;
                         case "Email":
@@ -50,8 +50,8 @@ namespace VTourAPI.Repositories
                         case "PhoneNumber":
                             userToReturn.PhoneNumber = reader.GetString(i);
                             break;
-                        case "UserPassword":
-                            userToReturn.HashPassword = reader.GetString(i);
+                        case "HashedPassword":
+                            userToReturn.HashedPassword = reader.GetString(i);
                             break;
                         case "Surname":
                             userToReturn.Surname = reader.GetString(i);
@@ -59,7 +59,7 @@ namespace VTourAPI.Repositories
                         case "PostalCode":
                             userToReturn.PostalCode = reader.GetInt32(i);
                             break;
-                        case "Address":
+                        case "StreetAddress":
                             userToReturn.Address = reader.GetString(i);
                             break;
                         default:
@@ -79,11 +79,11 @@ namespace VTourAPI.Repositories
 
             cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = userInfo.Email;
             cmd.Parameters.Add("@PhoneNumber", SqlDbType.VarChar).Value = userInfo.PhoneNumber;
-            cmd.Parameters.Add("@UserPassword", SqlDbType.VarChar).Value = userInfo.HashPassword;
-            cmd.Parameters.Add("@Firstname", SqlDbType.VarChar).Value = userInfo.FirstName;
+            cmd.Parameters.Add("@HashedPassword", SqlDbType.VarChar).Value = userInfo.HashedPassword;
+            cmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = userInfo.FirstName;
             cmd.Parameters.Add("@Surname", SqlDbType.VarChar).Value = userInfo.Surname;
             cmd.Parameters.Add("@PostalCode", SqlDbType.Int).Value = userInfo.PostalCode;
-            cmd.Parameters.Add("@Address", SqlDbType.VarChar).Value = userInfo.Address;
+            cmd.Parameters.Add("@StreetAddress", SqlDbType.VarChar).Value = userInfo.Address;
 
             connection.Open();
             cmd.ExecuteNonQuery();

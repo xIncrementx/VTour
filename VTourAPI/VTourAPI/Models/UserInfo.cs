@@ -9,6 +9,6 @@
         public string PhoneNumber { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
-        public string HashPassword { get; set; }
+        public string HashedPassword { get; set; }
     }
 }
